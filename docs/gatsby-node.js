@@ -1,5 +1,4 @@
 const path = require("path")
-const slugify = require("slugify")
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
@@ -15,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allComponentMetadata.nodes.forEach(node => {
     actions.createPage({
-      path: slugify(node.displayName),
+      path: node.displayName,
       component: path.resolve(`./src/templates/component.tsx`),
       context: { id: node.id },
     })
