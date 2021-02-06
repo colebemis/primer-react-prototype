@@ -1686,6 +1686,11 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.11.tgz#aeb16f50649a91af79dbe36574b66d0f9e4d9f71"
   integrity sha512-3NsZsJIA/22P3QUyrEDNA2D133H4j224twJrdipXN38dpnIOzAbUDtOwkcJ5pXmn75w7LSQDjA4tO9dm1XlqlA==
 
+"@primer/primitives@0.0.0-202113194440":
+  version "0.0.0-202113194440"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-0.0.0-202113194440.tgz#6572537226b139db39546fad0ffadd612ef5c1d0"
+  integrity sha512-NHPb9wve3MLWeMzo1M+kTFVA9oWK5kJQ63KEQSZreKeza1lnv+s8ZkK0hcynquwdiYhNqDgMSEUGkM2LU2ctvw==
+
 "@reach/router@^1.3.4":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.3.4.tgz#d2574b19370a70c80480ed91f3da840136d10f8c"

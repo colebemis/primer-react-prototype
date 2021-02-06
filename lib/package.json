@@ -53,6 +53,7 @@
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.7",
+    "docs": "*",
     "husky": "^4.3.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -60,10 +61,10 @@
     "styled-components": "^5.2.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
-    "typescript": "^4.1.3",
-    "docs": "*"
+    "typescript": "^4.1.3"
   },
   "dependencies": {
+    "@primer/primitives": "0.0.0-202113194440",
     "@styled-system/css": "^5.1.5",
     "@types/lodash.groupby": "^4.6.6",
     "@types/styled-system": "^5.1.10",
