@@ -11,9 +11,7 @@ exports.onCreateNode = async ({
   const { createNode } = actions
   if (node.extension === "tsx") {
     const components = docgen.parse(node.absolutePath)
-
     for (const component of components) {
-      console.log(component.props)
       const data = {
         displayName: component.displayName,
         description: component.description,

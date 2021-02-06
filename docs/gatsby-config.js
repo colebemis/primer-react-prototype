@@ -4,7 +4,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "components",
-        path: "../src/",
+        path: "../lib/src",
       },
     },
   ],

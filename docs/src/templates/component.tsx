@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Sidenav from "../components/sidenav"
-import { systemPropNames, systemPropsNames } from "../../../src"
+import { systemPropNames } from "lib"
 import partition from "lodash.partition"
 
 function Prop({ prop }) {

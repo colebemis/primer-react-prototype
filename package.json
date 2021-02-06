@@ -1,74 +1,11 @@
 {
-  "version": "0.1.0",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
+  "private": true,
+  "workspaces": [
+    "lib",
+    "docs",
+    "example"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
-  },
-  "peerDependencies": {
-    "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "component-api-demo",
-  "author": "Cole Bemis",
-  "module": "dist/component-api-demo.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/component-api-demo.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/component-api-demo.esm.js",
-      "limit": "10 KB"
-    }
-  ],
-  "devDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
-    "@size-limit/preset-small-lib": "^4.9.2",
-    "@types/react": "^17.0.1",
-    "@types/react-dom": "^17.0.0",
-    "@types/styled-components": "^5.1.7",
-    "husky": "^4.3.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "size-limit": "^4.9.2",
-    "styled-components": "^5.2.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.3"
-  },
-  "dependencies": {
-    "@styled-system/css": "^5.1.5",
-    "@types/lodash.groupby": "^4.6.6",
-    "@types/styled-system": "^5.1.10",
-    "@types/styled-system__css": "^5.0.14",
-    "lodash.groupby": "^4.6.0",
-    "react-docgen-typescript": "^1.21.0",
-    "styled-system": "^5.1.5"
+    "start": "yarn workspace docs start"
   }
 }
