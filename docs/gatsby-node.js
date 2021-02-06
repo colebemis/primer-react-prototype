@@ -45,20 +45,27 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allComponentMetadata {
+      allFile(
+        filter: {
+          internal: { mediaType: { eq: "text/mdx" } }
+          sourceInstanceName: { eq: "components" }
+        }
+      ) {
         nodes {
-          id
-          slug
-          displayName
+          absolutePath
+          childMdx {
+            slug
+          }
         }
       }
     }
   `)
-  result.data.allComponentMetadata.nodes.forEach(node => {
-    createPage({
-      path: node.slug,
-      component: path.resolve(`./src/templates/component.tsx`),
-      context: { id: node.id },
+
+  for (const node of result.data.allFile.nodes) {
+    await createPage({
+      path: node.childMdx.slug,
+      component: node.absolutePath,
+      context: { slug: node.childMdx.slug },
     })
-  })
+  }
 }

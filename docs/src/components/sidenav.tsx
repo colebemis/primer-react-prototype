@@ -1,23 +1,28 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
 
 export default function Sidenav() {
   const data = useStaticQuery(graphql`
     query {
-      allComponentMetadata {
+      allFile(
+        filter: {
+          internal: { mediaType: { eq: "text/mdx" } }
+          sourceInstanceName: { eq: "components" }
+        }
+      ) {
         nodes {
-          id
-          slug
-          displayName
+          childMdx {
+            slug
+          }
         }
       }
     }
   `)
   return (
     <ul>
-      {data.allComponentMetadata.nodes.map(node => (
-        <li key={node.id}>
-          <Link to={`/${node.slug}`}>{node.displayName}</Link>
+      {data.allFile.nodes.map(node => (
+        <li>
+          <a href={`/${node.childMdx.slug}`}>{node.childMdx.slug}</a>
         </li>
       ))}
     </ul>

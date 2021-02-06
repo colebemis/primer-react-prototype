@@ -7,5 +7,13 @@ module.exports = {
         path: "../lib/src",
       },
     },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        defaultLayouts: {
+          components: require.resolve("./src/components/component-layout.tsx"),
+        },
+      },
+    },
   ],
 }

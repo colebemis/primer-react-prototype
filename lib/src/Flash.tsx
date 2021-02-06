@@ -9,3 +9,7 @@ export type FlashProps = {
 export const Flash = ({ variant = 'info', ...props }: FlashProps) => {
   return <Base {...props} />;
 };
+
+Flash.Foo = (props: { bar: string }) => {
+  return <div />;
+};
