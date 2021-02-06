@@ -1,4 +1,5 @@
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider, Global } from '@emotion/react';
+import css from '@styled-system/css';
 import React from 'react';
 
 type PrimerProviderProps = {
@@ -6,5 +7,10 @@ type PrimerProviderProps = {
 };
 
 export function PrimerProvider({ children }: PrimerProviderProps) {
-  return <ThemeProvider theme={{}}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={{}}>
+      <Global styles={css({ body: { margin: 0, fontFamily: 'system-ui' } })} />
+      {children}
+    </ThemeProvider>
+  );
 }

@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import Sidenav from "./sidenav"
+import { Sidenav } from "./sidenav"
 
 function Prop({ prop }) {
   return (

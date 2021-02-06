@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 
-export default function Sidenav() {
+export function Sidenav() {
   const data = useStaticQuery(graphql`
     query {
       allFile(
@@ -11,6 +11,7 @@ export default function Sidenav() {
         }
       ) {
         nodes {
+          id
           childMdx {
             slug
           }
@@ -21,7 +22,7 @@ export default function Sidenav() {
   return (
     <ul>
       {data.allFile.nodes.map(node => (
-        <li>
+        <li key={node.id}>
           <a href={`/${node.childMdx.slug}`}>{node.childMdx.slug}</a>
         </li>
       ))}
