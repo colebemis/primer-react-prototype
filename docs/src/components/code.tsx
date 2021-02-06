@@ -1,8 +1,9 @@
 import * as components from "lib"
+import { Box } from "lib"
+import Highlight, { defaultProps } from "prism-react-renderer"
 import githubTheme from "prism-react-renderer/themes/github"
 import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
-import Highlight, { defaultProps } from "prism-react-renderer"
 
 type CodeProps = { children?: string; live?: boolean }
 
@@ -12,7 +13,15 @@ export function Code({ children, live }: CodeProps) {
   if (live) {
     return (
       <LiveProvider code={code} scope={components}>
-        <LivePreview />
+        <Box
+          p={3}
+          borderWidth={1}
+          borderStyle="solid"
+          borderColor="border.primary"
+          borderRadius={2}
+        >
+          <LivePreview />
+        </Box>
         <LiveEditor theme={githubTheme} />
         <LiveError />
       </LiveProvider>
