@@ -7,6 +7,5 @@ module.exports = {
         path: "../src/",
       },
     },
-    "gatsby-transformer-react-docgen",
   ],
 }

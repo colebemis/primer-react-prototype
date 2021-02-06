@@ -12,6 +12,10 @@ export function Foo(props: FooProps) {
   return <div>the snozzberries taste like snozzberries</div>;
 }
 
-Foo.Bar = () => {
+type FooBarProps = {
+  hi: string;
+};
+
+Foo.Bar = (props: FooBarProps) => {
   return <div>the snozzberries taste like snozzberries</div>;
 };

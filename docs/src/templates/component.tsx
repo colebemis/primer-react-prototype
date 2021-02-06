@@ -8,15 +8,15 @@ export default function Component({ data }) {
     <div>
       <Sidenav />
       <h1>{metadata.displayName}</h1>
-      <p>{metadata.description.text}</p>
+      <p>{metadata.description}</p>
       <h2>Props</h2>
       {metadata.props.map(prop => (
-        <React.Fragment key={prop.id}>
+        <React.Fragment key={prop.name}>
           <h3>
             {prop.name} {prop.required ? "(required)" : null}
           </h3>
           <code>{prop.type.name}</code>
-          <p>{prop.description.text}</p>
+          <p>{prop.description}</p>
         </React.Fragment>
       ))}
     </div>
@@ -26,16 +26,11 @@ export const query = graphql`
   query($id: String!) {
     componentMetadata(id: { eq: $id }) {
       displayName
-      description {
-        text
-      }
+      description
       props {
-        id
         name
         required
-        description {
-          text
-        }
+        description
         type {
           name
         }

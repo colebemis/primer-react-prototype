@@ -7,6 +7,7 @@ export default function Sidenav() {
       allComponentMetadata {
         nodes {
           id
+          slug
           displayName
         }
       }
@@ -16,7 +17,7 @@ export default function Sidenav() {
     <ul>
       {data.allComponentMetadata.nodes.map(node => (
         <li key={node.id}>
-          <Link to={`/${node.displayName}`}>{node.displayName}</Link>
+          <Link to={`/${node.slug}`}>{node.displayName}</Link>
         </li>
       ))}
     </ul>
