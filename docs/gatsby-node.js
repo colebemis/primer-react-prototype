@@ -10,22 +10,29 @@ exports.onCreateNode = async ({
 }) => {
   const { createNode } = actions
   if (node.extension === "tsx") {
-    const components = docgen.parse(node.absolutePath)
+    const components = docgen.parse(node.absolutePath, {
+      savePropValueAsString: true,
+    })
+
     for (const component of components) {
       const data = {
         displayName: component.displayName,
         description: component.description,
         slug: slugify(component.displayName),
-        props: Object.values(component.props).map(prop => ({
-          name: prop.name,
-          description: prop.description,
-          required: prop.required,
-          parent: prop.parent ? prop.parent.name : "",
-          type: {
-            name: prop.type.name,
-          },
-        })),
+        props: Object.values(component.props).map(prop => {
+          return {
+            name: prop.name,
+            description: prop.description,
+            required: prop.required,
+            defaultValue: prop.defaultValue ? prop.defaultValue.value : "",
+            parent: prop.parent ? prop.parent.name : "",
+            type: {
+              name: prop.type.name,
+            },
+          }
+        }),
       }
+
       await createNode({
         ...data,
         id: createNodeId(component.displayName),

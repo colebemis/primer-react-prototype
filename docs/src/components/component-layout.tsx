@@ -9,6 +9,11 @@ function Prop({ prop }) {
         {prop.name} {prop.required ? "(required)" : null}
       </h4>
       <code>{prop.type.name}</code>
+      {prop.defaultValue ? (
+        <p>
+          (default: <code>{prop.defaultValue}</code>)
+        </p>
+      ) : null}
       <p>{prop.description}</p>
     </React.Fragment>
   )
@@ -25,6 +30,7 @@ export default function ComponentLayout({ pageContext, children }) {
             name
             required
             description
+            defaultValue
             parent
             type {
               name
