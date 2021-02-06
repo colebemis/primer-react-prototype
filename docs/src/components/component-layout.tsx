@@ -53,6 +53,9 @@ export default function ComponentLayout({ pageContext, children }) {
     <div>
       <Sidenav />
       <h1>{pageContext.slug}</h1>
+      <pre>
+        <code>{`import { ${pageContext.slug} } from 'lib'`}</code>
+      </pre>
       {children}
       <h2>Props</h2>
       {components.map(component => (
