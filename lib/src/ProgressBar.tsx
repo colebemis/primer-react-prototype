@@ -1,3 +1,4 @@
+import { StandardCSSProperties } from '@styled-system/css';
 import React from 'react';
 import { Base, BaseProps } from './Base';
 
@@ -38,15 +39,20 @@ export const ProgressBar = ({
 
 type ProgressBarItemProps = {
   percentage: number;
+  bg?: StandardCSSProperties['backgroundColor'];
 } & Omit<BaseProps, '__internalStyles'>;
 
-ProgressBar.Item = ({ percentage, ...props }: ProgressBarItemProps) => {
+ProgressBar.Item = ({
+  percentage,
+  bg = 'bg.successInverse',
+  ...props
+}: ProgressBarItemProps) => {
   return (
     <Base
       {...props}
       __internalStyles={{
         width: `${percentage}%`,
-        bg: 'text.success',
+        bg: bg,
       }}
     />
   );

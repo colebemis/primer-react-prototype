@@ -74,6 +74,7 @@ const systemProps = compose(
 
 export const systemPropNames = systemProps.propNames;
 
+// TODO: as prop type/dom props
 export const Base = styled.div<InternalStylesProp & SystemProps & SxProp>(
   internalStylesProp,
   systemProps,
