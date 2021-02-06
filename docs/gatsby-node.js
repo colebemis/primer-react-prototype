@@ -12,8 +12,8 @@ exports.onCreateNode = async ({
   if (node.extension === "tsx") {
     const components = docgen.parse(node.absolutePath)
 
-    components.forEach(component => {
-      console.log(Object.values(component.props))
+    for (const component of components) {
+      console.log(component.props)
       const data = {
         displayName: component.displayName,
         description: component.description,
@@ -22,12 +22,13 @@ exports.onCreateNode = async ({
           name: prop.name,
           description: prop.description,
           required: prop.required,
+          parent: prop.parent ? prop.parent.name : "",
           type: {
             name: prop.type.name,
           },
         })),
       }
-      createNode({
+      await createNode({
         ...data,
         id: createNodeId(component.displayName),
         parent: null,
@@ -37,11 +38,13 @@ exports.onCreateNode = async ({
           contentDigest: createContentDigest(data),
         },
       })
-    })
+    }
   }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
   const result = await graphql(`
     query {
       allComponentMetadata {
@@ -54,7 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   result.data.allComponentMetadata.nodes.forEach(node => {
-    actions.createPage({
+    createPage({
       path: node.slug,
       component: path.resolve(`./src/templates/component.tsx`),
       context: { id: node.id },
