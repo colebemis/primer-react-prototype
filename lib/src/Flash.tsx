@@ -26,10 +26,9 @@ const variants = {
 
 export type FlashProps = {
   variant?: keyof typeof variants;
-  children?: React.ReactNode;
 } & PublicBaseProps;
 
-export const Flash = ({ variant = 'info', ...props }: FlashProps) => {
+export function Flash({ variant = 'info', ...props }: FlashProps) {
   return (
     <Base
       {...props}
@@ -42,4 +41,4 @@ export const Flash = ({ variant = 'info', ...props }: FlashProps) => {
       }}
     />
   );
-};
+}

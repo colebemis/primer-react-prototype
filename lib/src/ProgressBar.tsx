@@ -16,7 +16,6 @@ const sizes = {
 
 export type ProgressBarProps = {
   size?: keyof typeof sizes;
-  children?: React.ReactNode;
 } & PublicBaseProps;
 
 export const ProgressBar = ({
