@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { Box, Grid } from "lib"
+import { Box, Grid } from "@colebemis/components"
 import React from "react"
 import { Code } from "./code"
 import { Sidenav } from "./sidenav"
@@ -56,7 +56,7 @@ export default function ComponentLayout({ pageContext, children }) {
       <Sidenav />
       <Box width="100%" maxWidth={960} mx="auto">
         <h1>{pageContext.slug}</h1>
-        <Code>{`import { ${pageContext.slug} } from 'lib'`}</Code>
+        <Code>{`import { ${pageContext.slug} } from '@primer/components'`}</Code>
 
         {children}
         <h2>Props</h2>

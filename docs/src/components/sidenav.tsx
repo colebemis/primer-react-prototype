@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery, Link } from "gatsby"
 import React from "react"
 import groupBy from "lodash.groupby"
-import { Box } from "lib"
+import { Box } from "@colebemis/components"
 
 export function Sidenav() {
   const data = useStaticQuery(graphql`

@@ -22,7 +22,7 @@
     "gatsby-plugin-mdx": "^1.10.0",
     "gatsby-plugin-page-creator": "^2.10.0",
     "gatsby-source-filesystem": "^2.11.0",
-    "lib": "*",
+    "@colebemis/components": "*",
     "lodash.groupby": "^4.6.0",
     "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",

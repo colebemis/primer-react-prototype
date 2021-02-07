@@ -1,5 +1,5 @@
-import * as components from "lib"
-import { Box } from "lib"
+import * as components from "@colebemis/components"
+import { Box } from "@colebemis/components"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import vsDarkTheme from "prism-react-renderer/themes/vsDark"
 import React from "react"
