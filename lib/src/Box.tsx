@@ -16,6 +16,24 @@ import {
   ShadowProps,
   typography,
   TypographyProps,
+  gridGap,
+  gridRowGap,
+  gridColumnGap,
+  gridAutoFlow,
+  gridAutoRows,
+  gridAutoColumns,
+  gridTemplateRows,
+  gridTemplateColumns,
+  gridTemplateAreas,
+  GridGapProps,
+  GridRowGapProps,
+  GridColumnGapProps,
+  GridAutoFlowProps,
+  GridAutoRowsProps,
+  GridAutoColumnsProps,
+  GridTemplateRowsProps,
+  GridTemplateColumnsProps,
+  GridTemplateAreasProps,
 } from 'styled-system';
 import { Base, PublicBaseProps } from './Base';
 
@@ -25,7 +43,16 @@ type AdditionalSystemProps = ColorProps &
   LayoutProps &
   TypographyProps &
   BorderProps &
-  ShadowProps;
+  ShadowProps &
+  GridGapProps &
+  GridRowGapProps &
+  GridColumnGapProps &
+  GridAutoFlowProps &
+  GridAutoRowsProps &
+  GridAutoColumnsProps &
+  GridTemplateRowsProps &
+  GridTemplateColumnsProps &
+  GridTemplateAreasProps;
 
 const additionalSystemProps = compose(
   color,
@@ -34,7 +61,16 @@ const additionalSystemProps = compose(
   layout,
   typography,
   border,
-  shadow
+  shadow,
+  gridGap,
+  gridRowGap,
+  gridColumnGap,
+  gridAutoFlow,
+  gridAutoRows,
+  gridAutoColumns,
+  gridTemplateRows,
+  gridTemplateColumns,
+  gridTemplateAreas
 );
 
 export type BoxProps = AdditionalSystemProps & PublicBaseProps;

@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
+import { Box, Grid } from "lib"
 import React from "react"
 import { Sidenav } from "./sidenav"
 
@@ -50,26 +51,28 @@ export default function ComponentLayout({ pageContext, children }) {
   )
 
   return (
-    <div>
+    <Grid gridTemplateColumns="300px 1fr">
       <Sidenav />
-      <h1>{pageContext.slug}</h1>
-      <pre>
-        <code>{`import { ${pageContext.slug} } from 'lib'`}</code>
-      </pre>
-      {children}
-      <h2>Props</h2>
-      {components.map(component => (
-        <React.Fragment key={component.displayName}>
-          <details>
-            <summary>
-              <h3>{component.displayName}</h3>
-            </summary>
-            {component.props.map(prop => (
-              <Prop key={prop.name} prop={prop} />
-            ))}
-          </details>
-        </React.Fragment>
-      ))}
-    </div>
+      <Box width="100%" maxWidth={960} mx="auto">
+        <h1>{pageContext.slug}</h1>
+        <pre>
+          <code>{`import { ${pageContext.slug} } from 'lib'`}</code>
+        </pre>
+        {children}
+        <h2>Props</h2>
+        {components.map(component => (
+          <React.Fragment key={component.displayName}>
+            <details>
+              <summary>
+                <strong>{component.displayName}</strong>
+              </summary>
+              {component.props.map(prop => (
+                <Prop key={prop.name} prop={prop} />
+              ))}
+            </details>
+          </React.Fragment>
+        ))}
+      </Box>
+    </Grid>
   )
 }
