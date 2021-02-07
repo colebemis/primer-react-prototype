@@ -29,7 +29,7 @@ export function Code({ children, live }: CodeProps) {
   return (
     <Highlight {...defaultProps} code={code} language="jsx" theme={vsDarkTheme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
+        <Box as="pre" className={className} style={style} p={3}>
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -37,7 +37,7 @@ export function Code({ children, live }: CodeProps) {
               ))}
             </div>
           ))}
-        </pre>
+        </Box>
       )}
     </Highlight>
   )
