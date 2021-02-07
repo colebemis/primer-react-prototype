@@ -17,11 +17,13 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@types/lodash.groupby": "^4.6.6",
     "gatsby": "^2.32.3",
     "gatsby-plugin-mdx": "^1.10.0",
     "gatsby-plugin-page-creator": "^2.10.0",
     "gatsby-source-filesystem": "^2.11.0",
     "lib": "*",
+    "lodash.groupby": "^4.6.0",
     "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",
     "react-docgen-typescript": "^1.21.0",
