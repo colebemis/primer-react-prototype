@@ -12,6 +12,8 @@ exports.onCreateNode = async ({
   if (node.extension === "tsx") {
     const components = docgen.parse(node.absolutePath, {
       savePropValueAsString: true,
+      // shouldExtractLiteralValuesFromEnum: true,
+      // shouldExtractValuesFromUnion: true,
     })
 
     for (const component of components) {
