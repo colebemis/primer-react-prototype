@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import React from "react"
 import groupBy from "lodash.groupby"
 import { Box } from "lib"
@@ -38,7 +38,7 @@ export function Sidenav() {
           <ul>
             {pages.map(page => (
               <li key={page.id}>
-                <a href={`/${page.childMdx.slug}`}>{page.childMdx.slug}</a>
+                <Link to={`/${page.childMdx.slug}`}>{page.childMdx.slug}</Link>
               </li>
             ))}
           </ul>
