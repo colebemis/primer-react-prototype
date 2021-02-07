@@ -1,41 +1,62 @@
 import { useTheme } from '@emotion/react';
+import * as CSS from 'csstype';
 import React from 'react';
 import {
+  background,
+  BackgroundProps,
   border,
   BorderProps,
   color,
   ColorProps,
-  background,
-  BackgroundProps,
   compose,
+  gridAutoColumns,
+  GridAutoColumnsProps,
+  gridAutoFlow,
+  GridAutoFlowProps,
+  gridAutoRows,
+  GridAutoRowsProps,
+  gridColumnGap,
+  GridColumnGapProps,
+  gridGap,
+  GridGapProps,
+  gridRowGap,
+  GridRowGapProps,
+  gridTemplateAreas,
+  GridTemplateAreasProps,
+  gridTemplateColumns,
+  GridTemplateColumnsProps,
+  gridTemplateRows,
+  GridTemplateRowsProps,
   layout,
   LayoutProps,
   padding,
   PaddingProps,
+  RequiredTheme,
+  ResponsiveValue,
   shadow,
   ShadowProps,
+  system,
+  Theme,
+  TLengthStyledSystem,
   typography,
   TypographyProps,
-  gridGap,
-  gridRowGap,
-  gridColumnGap,
-  gridAutoFlow,
-  gridAutoRows,
-  gridAutoColumns,
-  gridTemplateRows,
-  gridTemplateColumns,
-  gridTemplateAreas,
-  GridGapProps,
-  GridRowGapProps,
-  GridColumnGapProps,
-  GridAutoFlowProps,
-  GridAutoRowsProps,
-  GridAutoColumnsProps,
-  GridTemplateRowsProps,
-  GridTemplateColumnsProps,
-  GridTemplateAreasProps,
 } from 'styled-system';
 import { Base, PublicBaseProps } from './Base';
+
+interface GapProps<
+  ThemeType extends Theme = RequiredTheme,
+  TVal = CSS.Property.Gap<TLengthStyledSystem>
+> {
+  gap?: ResponsiveValue<TVal, ThemeType>;
+}
+
+// NOTE: gap is not fully supported yet (https://caniuse.com/flexbox-gap)
+const gap = system({
+  gap: {
+    property: 'gap',
+    scale: 'space',
+  },
+});
 
 type AdditionalSystemProps = ColorProps &
   BackgroundProps &
@@ -52,7 +73,8 @@ type AdditionalSystemProps = ColorProps &
   GridAutoColumnsProps &
   GridTemplateRowsProps &
   GridTemplateColumnsProps &
-  GridTemplateAreasProps;
+  GridTemplateAreasProps &
+  GapProps;
 
 const additionalSystemProps = compose(
   color,
@@ -70,7 +92,8 @@ const additionalSystemProps = compose(
   gridAutoColumns,
   gridTemplateRows,
   gridTemplateColumns,
-  gridTemplateAreas
+  gridTemplateAreas,
+  gap
 );
 
 export type BoxProps = AdditionalSystemProps & PublicBaseProps;
