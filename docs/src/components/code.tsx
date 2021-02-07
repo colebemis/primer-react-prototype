@@ -18,7 +18,6 @@ export function Code({ children, live }: CodeProps) {
           borderWidth={1}
           borderStyle="solid"
           borderColor="border.primary"
-          borderRadius={2}
         >
           <LivePreview />
         </Box>
