@@ -1,7 +1,7 @@
 import * as components from "lib"
 import { Box } from "lib"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import githubTheme from "prism-react-renderer/themes/github"
+import vsDarkTheme from "prism-react-renderer/themes/vsDark"
 import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
 
@@ -22,13 +22,13 @@ export function Code({ children, live }: CodeProps) {
         >
           <LivePreview />
         </Box>
-        <LiveEditor theme={githubTheme} />
+        <LiveEditor theme={vsDarkTheme} />
         <LiveError />
       </LiveProvider>
     )
   }
   return (
-    <Highlight {...defaultProps} code={code} language="jsx" theme={githubTheme}>
+    <Highlight {...defaultProps} code={code} language="jsx" theme={vsDarkTheme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (

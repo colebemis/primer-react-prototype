@@ -11,7 +11,16 @@ export function PrimerProvider({ children }: PrimerProviderProps) {
   return (
     <ThemeProvider theme={theme}>
       {/* NOTE: Global styles might cause issues */}
-      <Global styles={css({ body: { margin: 0, fontFamily: 'system-ui' } })} />
+      <Global
+        styles={css({
+          body: {
+            margin: 0,
+            color: 'text.primary',
+            bg: 'bg.canvas',
+            fontFamily: 'normal',
+          },
+        })}
+      />
       {children}
     </ThemeProvider>
   );
