@@ -67,9 +67,11 @@
     "@primer/primitives": "0.0.0-202113194440",
     "@styled-system/css": "^5.1.5",
     "@types/lodash.groupby": "^4.6.6",
+    "@types/lodash.omit": "^4.5.6",
     "@types/styled-system": "^5.1.10",
     "@types/styled-system__css": "^5.0.14",
     "lodash.groupby": "^4.6.0",
+    "lodash.omit": "^4.5.0",
     "react-docgen-typescript": "^1.21.0",
     "styled-system": "^5.1.5"
   }

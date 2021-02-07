@@ -1,5 +1,5 @@
 import React from 'react';
-import { Base, BaseProps } from './Base';
+import { Base, PublicBaseProps } from './Base';
 
 const variants = {
   info: {
@@ -27,7 +27,7 @@ const variants = {
 export type FlashProps = {
   variant?: keyof typeof variants;
   children?: React.ReactNode;
-} & Omit<BaseProps, '__internalStyles'>;
+} & PublicBaseProps;
 
 export const Flash = ({ variant = 'info', ...props }: FlashProps) => {
   return (

@@ -1,6 +1,6 @@
 import { StandardCSSProperties } from '@styled-system/css';
 import React from 'react';
-import { Base, BaseProps } from './Base';
+import { Base, PublicBaseProps } from './Base';
 
 const sizes = {
   small: {
@@ -17,7 +17,7 @@ const sizes = {
 export type ProgressBarProps = {
   size?: keyof typeof sizes;
   children?: React.ReactNode;
-} & Omit<BaseProps, '__internalStyles'>;
+} & PublicBaseProps;
 
 export const ProgressBar = ({
   size = 'medium',
@@ -40,7 +40,7 @@ export const ProgressBar = ({
 type ProgressBarItemProps = {
   percentage: number;
   bg?: StandardCSSProperties['backgroundColor'];
-} & Omit<BaseProps, '__internalStyles'>;
+} & PublicBaseProps;
 
 ProgressBar.Item = ({
   percentage,

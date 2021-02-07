@@ -82,3 +82,4 @@ export const Base = styled.div<InternalStylesProp & SystemProps & SxProp>(
 );
 
 export type BaseProps = React.ComponentProps<typeof Base>;
+export type PublicBaseProps = Omit<BaseProps, '__internalStyles'>;

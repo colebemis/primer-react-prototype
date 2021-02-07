@@ -1,27 +1,50 @@
+import { useTheme } from '@emotion/react';
 import React from 'react';
-import { Base, BaseProps } from './Base';
 import {
-  color,
-  ColorProps,
-  padding,
-  PaddingProps,
-  compose,
   border,
   BorderProps,
+  color,
+  ColorProps,
+  background,
+  BackgroundProps,
+  compose,
+  layout,
+  LayoutProps,
+  padding,
+  PaddingProps,
+  shadow,
+  ShadowProps,
+  typography,
+  TypographyProps,
 } from 'styled-system';
-import { useTheme } from '@emotion/react';
+import { Base, PublicBaseProps } from './Base';
 
-type SystemProps = ColorProps & PaddingProps & BorderProps;
+type AdditionalSystemProps = ColorProps &
+  BackgroundProps &
+  PaddingProps &
+  LayoutProps &
+  TypographyProps &
+  BorderProps &
+  ShadowProps;
 
-const systemProps = compose(color, padding, border);
+const additionalSystemProps = compose(
+  color,
+  background,
+  padding,
+  layout,
+  typography,
+  border,
+  shadow
+);
 
-export type BoxProps = {
-  children?: React.ReactNode;
-} & SystemProps &
-  Omit<BaseProps, '__internalStyles'>;
+export type BoxProps = AdditionalSystemProps & PublicBaseProps;
 
-export const Box = ({ ...props }: BoxProps) => {
+export function Box(props: BoxProps) {
   const theme = useTheme();
-  props.theme = props.theme ?? theme;
-  return <Base {...props} __internalStyles={systemProps(props)} />;
-};
+  return (
+    <Base
+      {...props}
+      __internalStyles={additionalSystemProps({ theme, ...props })}
+    />
+  );
+}
