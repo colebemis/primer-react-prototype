@@ -1,13 +1,17 @@
 import { ThemeProvider, Global } from '@emotion/react';
 import css from '@styled-system/css';
 import React from 'react';
-import { theme } from './theme';
+import { theme as defaultTheme } from './theme';
 
 type PrimerProviderProps = {
+  theme?: typeof defaultTheme;
   children?: React.ReactNode;
 };
 
-export function PrimerProvider({ children }: PrimerProviderProps) {
+export function PrimerProvider({
+  theme = defaultTheme,
+  children,
+}: PrimerProviderProps) {
   return (
     <ThemeProvider theme={theme}>
       {/* NOTE: Global styles might cause issues */}
