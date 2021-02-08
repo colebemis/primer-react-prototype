@@ -1,7 +1,7 @@
 import * as components from "@colebemis/components"
 import { Box } from "@colebemis/components"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import vsDarkTheme from "prism-react-renderer/themes/vsDark"
+import prismTheme from "prism-react-renderer/themes/github"
 import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
 
@@ -18,18 +18,40 @@ export function Code({ children, live }: CodeProps) {
           borderWidth={1}
           borderStyle="solid"
           borderColor="border.primary"
+          borderTopRightRadius={2}
+          borderTopLeftRadius={2}
         >
           <LivePreview />
         </Box>
-        <LiveEditor theme={vsDarkTheme} />
+        <LiveEditor
+          theme={prismTheme}
+          // @ts-ignore
+          padding={16}
+          style={{
+            // TODO: use theme values
+            fontFamily:
+              'SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace',
+            fontSize: 14,
+            borderBottomRightRadius: 6,
+            borderBottomLeftRadius: 6,
+          }}
+        />
         <LiveError />
       </LiveProvider>
     )
   }
   return (
-    <Highlight {...defaultProps} code={code} language="jsx" theme={vsDarkTheme}>
+    <Highlight {...defaultProps} code={code} language="jsx" theme={prismTheme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Box as="pre" className={className} style={style} p={3}>
+        <Box
+          as="pre"
+          className={className}
+          style={style}
+          p={3}
+          fontFamily="mono"
+          fontSize={1}
+          borderRadius={2}
+        >
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
