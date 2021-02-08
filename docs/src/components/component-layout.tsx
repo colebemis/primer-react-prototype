@@ -1,4 +1,4 @@
-import { Box, Grid } from "primer-react-demo"
+import { Box, Grid, InlineCode } from "primer-react-demo"
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { Code } from "./code"
@@ -11,7 +11,7 @@ function Prop({ prop }) {
       <h4>
         {prop.name} {prop.required ? "(required)" : null}
       </h4>
-      <code>{prop.type.name}</code>
+      <InlineCode>{prop.type.name}</InlineCode>
       {prop.defaultValue ? (
         <p>
           (default: <code>{prop.defaultValue}</code>)
