@@ -1686,6 +1686,11 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.11.tgz#aeb16f50649a91af79dbe36574b66d0f9e4d9f71"
   integrity sha512-3NsZsJIA/22P3QUyrEDNA2D133H4j224twJrdipXN38dpnIOzAbUDtOwkcJ5pXmn75w7LSQDjA4tO9dm1XlqlA==
 
+"@primer/octicons-react@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-12.0.0.tgz#4b42a361636e4834cb55d241995086e1c1908cd3"
+  integrity sha512-L1u2kjhAEMoOeNOZqQSc4xGE7/Cl6kjhuiIKrJOmNa6M86Zy+/pv1zFlvFnWzxu2FhPTlZWC4LLazTYf5spceA==
+
 "@primer/primitives@0.0.0-202113194440":
   version "0.0.0-202113194440"
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-0.0.0-202113194440.tgz#6572537226b139db39546fad0ffadd612ef5c1d0"
