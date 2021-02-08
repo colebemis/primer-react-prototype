@@ -7,3 +7,13 @@ group: Components
   <ProgressBar.Item percentage={20} />
 </ProgressBar>
 ```
+
+## Multiple items
+
+```jsx live
+<ProgressBar>
+  <ProgressBar.Item percentage={30} />
+  <ProgressBar.Item percentage={20} bg="bg.warningInverse" />
+  <ProgressBar.Item percentage={10} bg="bg.dangerInverse" />
+</ProgressBar>
+```

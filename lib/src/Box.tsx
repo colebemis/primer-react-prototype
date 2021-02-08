@@ -9,6 +9,8 @@ import {
   color,
   ColorProps,
   compose,
+  flexDirection,
+  FlexDirectionProps,
   gridAutoColumns,
   GridAutoColumnsProps,
   gridAutoFlow,
@@ -65,6 +67,7 @@ type AdditionalSystemProps = ColorProps &
   TypographyProps &
   BorderProps &
   ShadowProps &
+  FlexDirectionProps &
   GridGapProps &
   GridRowGapProps &
   GridColumnGapProps &
@@ -84,6 +87,7 @@ const additionalSystemProps = compose(
   typography,
   border,
   shadow,
+  flexDirection,
   gridGap,
   gridRowGap,
   gridColumnGap,

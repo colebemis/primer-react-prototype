@@ -18,7 +18,7 @@ export function PrimerProvider({ children }: PrimerProviderProps) {
             color: 'text.primary',
             bg: 'bg.canvas',
             fontFamily: 'normal',
-            lineHeight: 'normal',
+            lineHeight: 'default',
           },
         })}
       />

@@ -2,6 +2,19 @@
 group: Internal
 ---
 
-```
-<Base></Base>
+```tsx
+export type MyComponentProps = {} & PublicBaseProps;
+
+export function MyComponent(props: MyComponentProps) {
+  return (
+    <Base
+      as="span"
+      {...props}
+      __internalStyles={{
+        // theme-aware styles
+        color: 'text.success',
+      }}
+    />
+  );
+}
 ```

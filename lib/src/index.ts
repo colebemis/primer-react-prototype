@@ -6,3 +6,5 @@ export { Flex } from './Flex';
 export { Grid } from './Grid';
 export { PrimerProvider } from './PrimerProvider';
 export { ProgressBar } from './ProgressBar';
+export { InlineCode } from './InlineCode';
+export { Text } from './Text';

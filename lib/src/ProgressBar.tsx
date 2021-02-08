@@ -27,6 +27,7 @@ export const ProgressBar = ({
       {...props}
       __internalStyles={{
         display: 'flex',
+        gap: '2px',
         bg: 'bg.tertiary',
         overflow: 'hidden',
         borderRadius: 2,

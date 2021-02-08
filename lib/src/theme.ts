@@ -7,7 +7,7 @@ function fontStack(fonts: string[]) {
 }
 
 export const theme = {
-  colors: primitives.colors.dark,
+  colors: primitives.colors.light,
   space: [
     '0',
     '4px',
