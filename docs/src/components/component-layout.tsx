@@ -1,4 +1,4 @@
-import { Box, Grid } from "@colebemis/components"
+import { Box, Grid } from "primer-react-demo"
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { Code } from "./code"

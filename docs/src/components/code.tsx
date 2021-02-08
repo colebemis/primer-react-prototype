@@ -1,5 +1,5 @@
-import * as components from "@colebemis/components"
-import { Box } from "@colebemis/components"
+import * as components from "primer-react-demo"
+import { Box } from "primer-react-demo"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import prismTheme from "prism-react-renderer/themes/github"
 import React from "react"

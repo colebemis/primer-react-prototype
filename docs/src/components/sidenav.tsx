@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery, Link } from "gatsby"
 import React from "react"
 import groupBy from "lodash.groupby"
-import { Box, Flex } from "@colebemis/components"
+import { Box, Flex } from "primer-react-demo"
 
 export function Sidenav() {
   const data = useStaticQuery(graphql`

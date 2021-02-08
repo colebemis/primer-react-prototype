@@ -1,4 +1,4 @@
-import { Box, Grid } from "@colebemis/components"
+import { Box, Grid } from "primer-react-demo"
 import React from "react"
 import { Header } from "./header"
 import { Sidenav } from "./sidenav"
