@@ -3,6 +3,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "pages",
+        path: "./src/pages",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "components",
         path: "../lib/src",
       },
@@ -12,6 +19,7 @@ module.exports = {
       options: {
         defaultLayouts: {
           components: require.resolve("./src/components/component-layout.tsx"),
+          default: require.resolve("./src/components/page-layout.tsx"),
         },
       },
     },
