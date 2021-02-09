@@ -9,3 +9,4 @@ export { PrimerProvider } from './PrimerProvider';
 export { ProgressBar } from './ProgressBar';
 export { Text } from './Text';
 export { theme } from './theme';
+export { Button } from './Button';
