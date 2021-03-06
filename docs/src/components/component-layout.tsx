@@ -23,34 +23,34 @@ function Prop({ prop }) {
 }
 
 export function ComponentLayout({ pageContext, children }) {
-  const data = useStaticQuery(graphql`
-    query {
-      allComponentMetadata {
-        nodes {
-          displayName
-          description
-          props {
-            name
-            required
-            description
-            defaultValue
-            parent
-            type {
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allComponentMetadata {
+  //       nodes {
+  //         displayName
+  //         description
+  //         props {
+  //           name
+  //           required
+  //           description
+  //           defaultValue
+  //           parent
+  //           type {
+  //             name
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const components = React.useMemo(
-    () =>
-      data.allComponentMetadata.nodes.filter(node =>
-        new RegExp(`^${pageContext.slug}(\..+)?$`).test(node.displayName)
-      ),
-    [data, pageContext.slug]
-  )
+  // const components = React.useMemo(
+  //   () =>
+  //     data.allComponentMetadata.nodes.filter(node =>
+  //       new RegExp(`^${pageContext.slug}(\..+)?$`).test(node.displayName)
+  //     ),
+  //   [data, pageContext.slug]
+  // )
 
   return (
     <Box>
@@ -62,7 +62,7 @@ export function ComponentLayout({ pageContext, children }) {
           <Code>{`import { ${pageContext.slug} } from '@primer/components'`}</Code>
 
           {children}
-          <h2>Props</h2>
+          {/* <h2>Props</h2>
           {components.map(component => (
             <React.Fragment key={component.displayName}>
               <details>
@@ -74,7 +74,7 @@ export function ComponentLayout({ pageContext, children }) {
                 ))}
               </details>
             </React.Fragment>
-          ))}
+          ))} */}
         </Box>
       </Grid>
     </Box>

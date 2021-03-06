@@ -2,52 +2,63 @@ const path = require("path")
 const slugify = require("slugify")
 const docgen = require("react-docgen-typescript")
 
-exports.onCreateNode = async ({
-  node,
-  actions,
-  createNodeId,
-  createContentDigest,
-}) => {
-  const { createNode } = actions
-  if (node.extension === "tsx") {
-    const components = docgen.parse(node.absolutePath, {
-      savePropValueAsString: true,
-      // shouldExtractLiteralValuesFromEnum: true,
-      // shouldExtractValuesFromUnion: true,
-    })
+// exports.onCreateNode = async ({
+//   node,
+//   actions,
+//   createNodeId,
+//   createContentDigest,
+// }) => {
+//   const { createNode } = actions
+//   if (node.extension === "tsx") {
+//     const components = docgen.parse(node.absolutePath, {
+//       savePropValueAsString: true,
+//       // shouldExtractLiteralValuesFromEnum: true,
+//       // shouldExtractValuesFromUnion: true,
+//       propFilter: prop => {
+//         if (prop.parent) {
+//           return !prop.parent.fileName.includes("node_modules")
+//         }
 
-    for (const component of components) {
-      const data = {
-        displayName: component.displayName,
-        description: component.description,
-        slug: slugify(component.displayName),
-        props: Object.values(component.props).map(prop => {
-          return {
-            name: prop.name,
-            description: prop.description,
-            required: prop.required,
-            defaultValue: prop.defaultValue ? prop.defaultValue.value : "",
-            parent: prop.parent ? prop.parent.name : "",
-            type: {
-              name: prop.type.name,
-            },
-          }
-        }),
-      }
+//         if (["as", "theme", "sx"].includes(prop.name)) {
+//           return false
+//         }
 
-      await createNode({
-        ...data,
-        id: createNodeId(component.displayName),
-        parent: null,
-        internal: {
-          type: "ComponentMetadata",
-          content: JSON.stringify(data),
-          contentDigest: createContentDigest(data),
-        },
-      })
-    }
-  }
-}
+//         return true
+//       },
+//     })
+
+//     for (const component of components) {
+//       const data = {
+//         displayName: component.displayName,
+//         description: component.description,
+//         slug: slugify(component.displayName),
+//         props: Object.values(component.props).map(prop => {
+//           return {
+//             name: prop.name,
+//             description: prop.description,
+//             required: prop.required,
+//             defaultValue: prop.defaultValue ? prop.defaultValue.value : "",
+//             parent: prop.parent ? prop.parent.name : "",
+//             type: {
+//               name: prop.type.name,
+//             },
+//           }
+//         }),
+//       }
+
+//       await createNode({
+//         ...data,
+//         id: createNodeId(component.displayName),
+//         parent: null,
+//         internal: {
+//           type: "ComponentMetadata",
+//           content: JSON.stringify(data),
+//           contentDigest: createContentDigest(data),
+//         },
+//       })
+//     }
+//   }
+// }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
