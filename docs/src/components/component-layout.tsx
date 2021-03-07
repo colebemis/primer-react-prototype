@@ -113,7 +113,7 @@ export function ComponentLayout({ pageContext, children }) {
               Alpha
             </Label>
           </Box>
-          <Code>{`import { ${pageContext.slug} } from 'primer-react-demo'`}</Code>
+          <Code>{`import { ${pageContext.slug} } from 'primer-react-prototype'`}</Code>
 
           {children}
           <Heading mt={6} mb={2}>
