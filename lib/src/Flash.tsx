@@ -1,5 +1,18 @@
 import React from 'react';
-import { Base } from './Base';
+import { Base, SxProp } from './Base';
+import { ForwardRefComponent } from './polymorphic';
+import { common, CommonSystemProps, forwardSystemProps } from './system-props';
+
+const defaultElement = 'div';
+
+type Variant = 'info' | 'success' | 'warn' | 'error';
+
+export type FlashProps = SxProp &
+  CommonSystemProps & {
+    variant?: Variant;
+  };
+
+type FlashComponent = ForwardRefComponent<typeof defaultElement, FlashProps>;
 
 const variants = {
   info: {
@@ -24,21 +37,21 @@ const variants = {
   },
 };
 
-export type FlashProps = {
-  variant?: keyof typeof variants;
-};
-
-export function Flash({ variant = 'info', ...props }: FlashProps) {
-  return (
-    <Base
-      {...props}
-      __css={{
-        padding: 3,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderRadius: 2,
-        ...variants[variant],
-      }}
-    />
-  );
-}
+export const Flash = React.forwardRef(
+  ({ as = defaultElement, variant = 'info', ...props }, ref) => {
+    return (
+      <Base
+        as={as}
+        ref={ref}
+        {...forwardSystemProps(props, common)}
+        __css={{
+          padding: 3,
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderRadius: 2,
+          ...variants[variant],
+        }}
+      />
+    );
+  }
+) as FlashComponent;

@@ -1,9 +1,21 @@
+import { SystemStyleObject } from '@styled-system/css';
 import React from 'react';
 import { Base, SxProp } from './Base';
 import { ForwardRefComponent } from './polymorphic';
 import { common, CommonSystemProps, forwardSystemProps } from './system-props';
 
-const variants = {
+const defaultElement = 'button';
+
+type Variant = 'default' | 'primary' | 'danger';
+
+export type ButtonProps = SxProp &
+  CommonSystemProps & {
+    variant?: Variant;
+  };
+
+type ButtonComponent = ForwardRefComponent<typeof defaultElement, ButtonProps>;
+
+const variants: Record<Variant, SystemStyleObject> = {
   default: {
     color: 'btn.text',
     bg: 'btn.bg',
@@ -20,15 +32,6 @@ const variants = {
     borderColor: 'btn.border',
   },
 };
-
-const defaultElement = 'button';
-
-export type ButtonProps = SxProp &
-  CommonSystemProps & {
-    variant?: keyof typeof variants;
-  };
-
-type ButtonComponent = ForwardRefComponent<typeof defaultElement, ButtonProps>;
 
 export const Button = React.forwardRef(
   ({ as = defaultElement, variant = 'default', ...props }, ref) => {
