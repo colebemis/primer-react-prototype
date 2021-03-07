@@ -98,7 +98,6 @@ export function ComponentLayout({ pageContext, children }) {
     [metadata, pageContext.slug]
   )
 
-  console.log(layout.propNames)
   return (
     <Box>
       <Header />
