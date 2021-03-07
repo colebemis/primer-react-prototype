@@ -1,5 +1,6 @@
 import { MDXProvider } from "@mdx-js/react"
 import GithubSlugger from "github-slugger"
+import * as components from "primer-react-prototype"
 import {
   Heading,
   InlineCode,
@@ -9,24 +10,6 @@ import {
 import React from "react"
 import textContent from "react-addons-text-content"
 import { Code } from "./code"
-// import { createGlobalStyle } from "styled-components"
-// import css from "@styled-system/css"
-
-// const GlobalStyle = createGlobalStyle(
-//   css({
-//     "*, *::before, *::after": {
-//       boxSizing: "inherit",
-//     },
-//     body: {
-//       margin: 0,
-//       color: "text.primary",
-//       bg: "bg.canvas",
-//       fontFamily: "normal",
-//       lineHeight: "default",
-//       boxSizing: "border-box",
-//     },
-//   })
-// )
 
 function H2(props) {
   const slugger = new GithubSlugger()
@@ -35,21 +18,21 @@ function H2(props) {
   return <Heading as="h2" id={id} {...props} />
 }
 
-const components = {
+const mdxComponents = {
   pre: props => props.children,
   code: Code,
   inlineCode: InlineCode,
   a: Link,
   h2: H2,
+
+  // Shortcodes
+  ...components,
 }
 
 export function wrapPageElement({ element }) {
   return (
-    <MDXProvider components={components}>
-      <ThemeProvider>
-        {/* <GlobalStyle /> */}
-        {element}
-      </ThemeProvider>
+    <MDXProvider components={mdxComponents}>
+      <ThemeProvider>{element}</ThemeProvider>
     </MDXProvider>
   )
 }
