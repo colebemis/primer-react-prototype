@@ -1729,11 +1729,6 @@
   resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-12.0.0.tgz#4b42a361636e4834cb55d241995086e1c1908cd3"
   integrity sha512-L1u2kjhAEMoOeNOZqQSc4xGE7/Cl6kjhuiIKrJOmNa6M86Zy+/pv1zFlvFnWzxu2FhPTlZWC4LLazTYf5spceA==
 
-"@primer/primitives@0.0.0-202113194440":
-  version "0.0.0-202113194440"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-0.0.0-202113194440.tgz#6572537226b139db39546fad0ffadd612ef5c1d0"
-  integrity sha512-NHPb9wve3MLWeMzo1M+kTFVA9oWK5kJQ63KEQSZreKeza1lnv+s8ZkK0hcynquwdiYhNqDgMSEUGkM2LU2ctvw==
-
 "@primer/primitives@^0.0.0-20212382031":
   version "0.0.0-20212382031"
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-0.0.0-20212382031.tgz#a45e406d984259f9960715b5a53290aaf75c1a04"
@@ -12154,19 +12149,6 @@ pretty-format@^25.2.1, pretty-format@^25.5.0:
     ansi-regex "^5.0.0"
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
-
-primer-react-demo@*:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/primer-react-demo/-/primer-react-demo-0.3.0.tgz#38f167d79f8097db8873d78d168c225acb25f699"
-  integrity sha512-NgKO8iFn3t64xDKNcf3dZlBRoNk4a8/YlPYqVW4rcjFPXZwDk3Lr1gNoW3K1m3jzZ+wdTOSzcm74bqfWwJbV+w==
-  dependencies:
-    "@primer/primitives" "0.0.0-202113194440"
-    "@styled-system/css" "^5.1.5"
-    "@types/lodash.groupby" "^4.6.6"
-    "@types/lodash.omit" "^4.5.6"
-    "@types/styled-system" "^5.1.10"
-    "@types/styled-system__css" "^5.0.14"
-    styled-system "^5.1.5"
 
 prism-react-renderer@^1.0.1, prism-react-renderer@^1.1.1:
   version "1.1.1"

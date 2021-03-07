@@ -1,4 +1,4 @@
-import { Flex, Text } from "primer-react-demo"
+import { Flex, Text } from "primer-react-prototype"
 import { MarkGithubIcon } from "@primer/octicons-react"
 import React from "react"
 

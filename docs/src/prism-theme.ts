@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from "primer-react-demo"
+import { theme as defaultTheme } from "primer-react-prototype"
 
 export const prismTheme = (theme: typeof defaultTheme) => ({
   plain: {

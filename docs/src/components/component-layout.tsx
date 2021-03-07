@@ -8,8 +8,8 @@ import {
   Text,
   Heading,
   layout,
-} from "primer-react-demo"
-import metadata from "primer-react-demo/dist/metadata.json"
+} from "primer-react-prototype"
+import metadata from "primer-react-prototype/dist/metadata.json"
 import React from "react"
 import { Code } from "./code"
 import { Header } from "./header"

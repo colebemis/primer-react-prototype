@@ -1,4 +1,4 @@
-import { Box, Grid, Heading } from "primer-react-demo"
+import { Box, Grid, Heading } from "primer-react-prototype"
 import React from "react"
 import { Header } from "./header"
 import { Sidenav } from "./sidenav"

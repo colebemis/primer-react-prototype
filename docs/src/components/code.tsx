@@ -1,5 +1,5 @@
-import * as components from "primer-react-demo"
-import { Box } from "primer-react-demo"
+import * as components from "primer-react-prototype"
+import { Box } from "primer-react-prototype"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"

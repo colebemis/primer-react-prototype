@@ -1,6 +1,11 @@
 import { MDXProvider } from "@mdx-js/react"
 import GithubSlugger from "github-slugger"
-import { Heading, InlineCode, Link, ThemeProvider } from "primer-react-demo"
+import {
+  Heading,
+  InlineCode,
+  Link,
+  ThemeProvider,
+} from "primer-react-prototype"
 import React from "react"
 import textContent from "react-addons-text-content"
 import { Code } from "./code"
