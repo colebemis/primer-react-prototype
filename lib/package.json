@@ -1,5 +1,5 @@
 {
-  "name": "primer-react-demo",
+  "name": "primer-react-prototype",
   "version": "0.3.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -13,8 +13,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "prebuild": "node ./bin/docgen.js",
     "build": "tsdx build",
+    "postbuild": "node ./bin/docgen.js",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
