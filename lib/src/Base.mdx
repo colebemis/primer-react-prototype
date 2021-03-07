@@ -2,6 +2,10 @@
 group: Internal
 ---
 
+<Flash variant="warn">
+  This is an internal utility and not intended for public usage.
+</Flash>
+
 ```tsx
 import React from 'react';
 import { SystemStyleObject } from 'styled-system';
@@ -42,7 +46,7 @@ export const Example = React.forwardRef(
         ref={ref}
         {...forwardSystemProps(props, common)}
         __css={{
-          // theme-aware styles
+          // theme-aware styles that can be overriden by system props or the `sx` prop
           bg: 'bg.primary',
           ...sizes[size],
         }}
