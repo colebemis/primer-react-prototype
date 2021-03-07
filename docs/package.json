@@ -29,7 +29,7 @@
     "lodash.groupby": "^4.6.0",
     "lodash.omit": "^4.5.0",
     "lodash.pick": "^4.4.0",
-    "primer-react-demo": "*",
+    "primer-react-prototype": "*",
     "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",
     "react-addons-text-content": "^0.0.4",
