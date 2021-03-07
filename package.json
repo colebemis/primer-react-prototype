@@ -6,6 +6,8 @@
     "example"
   ],
   "scripts": {
-    "start": "yarn workspace docs start"
+    "build": "yarn build:lib && yarn build:docs",
+    "build:lib": "yarn workspace primer-react-prototype build",
+    "build:docs": "yarn workspace docs build"
   }
 }
