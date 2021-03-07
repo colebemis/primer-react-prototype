@@ -9,6 +9,24 @@ import {
 import React from "react"
 import textContent from "react-addons-text-content"
 import { Code } from "./code"
+import { createGlobalStyle } from "styled-components"
+import css from "@styled-system/css"
+
+const GlobalStyle = createGlobalStyle(
+  css({
+    "*, *::before, *::after": {
+      boxSizing: "inherit",
+    },
+    body: {
+      margin: 0,
+      color: "text.primary",
+      bg: "bg.canvas",
+      fontFamily: "normal",
+      lineHeight: "default",
+      boxSizing: "border-box",
+    },
+  })
+)
 
 function H2(props) {
   const slugger = new GithubSlugger()
@@ -28,7 +46,10 @@ const components = {
 export function wrapRootElement({ element }) {
   return (
     <MDXProvider components={components}>
-      <ThemeProvider>{element}</ThemeProvider>
+      <ThemeProvider>
+        <GlobalStyle />
+        {element}
+      </ThemeProvider>
     </MDXProvider>
   )
 }
