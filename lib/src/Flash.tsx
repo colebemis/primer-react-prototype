@@ -1,5 +1,5 @@
 import React from 'react';
-import { Base, PublicBaseProps } from './Base';
+import { Base } from './Base';
 
 const variants = {
   info: {
@@ -26,13 +26,13 @@ const variants = {
 
 export type FlashProps = {
   variant?: keyof typeof variants;
-} & PublicBaseProps;
+};
 
 export function Flash({ variant = 'info', ...props }: FlashProps) {
   return (
     <Base
       {...props}
-      __internalStyles={{
+      __css={{
         padding: 3,
         borderWidth: 1,
         borderStyle: 'solid',

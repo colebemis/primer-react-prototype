@@ -1,85 +1,37 @@
-import styled from '@emotion/styled';
 import css, { SystemStyleObject } from '@styled-system/css';
-import {
-  alignSelf,
-  AlignSelfProps,
-  compose,
-  flex,
-  flexBasis,
-  FlexBasisProps,
-  flexGrow,
-  FlexGrowProps,
-  FlexProps,
-  flexShrink,
-  FlexShrinkProps,
-  gridArea,
-  GridAreaProps,
-  gridColumn,
-  GridColumnProps,
-  gridRow,
-  GridRowProps,
-  justifySelf,
-  JustifySelfProps,
-  margin,
-  MarginProps,
-  order,
-  OrderProps,
-  position,
-  PositionProps,
-} from 'styled-system';
+import styled from 'styled-components';
+import * as styledSystem from 'styled-system';
+import { ForwardRefComponent } from './polymorphic';
+import { AllSystemProps, all } from './system-props';
 
-type InternalStylesProp = {
-  __internalStyles?: SystemStyleObject;
-};
+const defaultElement = 'div';
 
-function internalStylesProp(props: InternalStylesProp) {
-  return css(props.__internalStyles);
-}
-
-type SxProp = {
+export type SxProp = {
   sx?: SystemStyleObject;
 };
 
-function sxProp(props: SxProp) {
-  return css(props.sx);
+export type BaseProps = SxProp &
+  AllSystemProps & {
+    __css?: SystemStyleObject;
+    __systemProps?: styledSystem.styleFn[];
+  };
+
+type BaseComponent = ForwardRefComponent<typeof defaultElement, BaseProps>;
+
+function __css({ __css }: BaseProps) {
+  return css(__css);
 }
 
-type SystemProps = MarginProps &
-  PositionProps &
-  FlexProps &
-  FlexGrowProps &
-  FlexShrinkProps &
-  FlexBasisProps &
-  AlignSelfProps &
-  JustifySelfProps &
-  OrderProps &
-  GridAreaProps &
-  GridColumnProps &
-  GridRowProps;
+// function __systemProps({ __systemProps = [], ...props }: BaseProps) {
+//   return __systemProps.flatMap(styleFn => styleFn(props));
+// }
 
-const systemProps = compose(
-  margin,
-  position,
-  flex,
-  flexGrow,
-  flexShrink,
-  flexBasis,
-  alignSelf,
-  justifySelf,
-  order,
-  gridArea,
-  gridColumn,
-  gridRow
-);
+function sx({ sx }: BaseProps) {
+  return css(sx);
+}
 
-export const systemPropNames = systemProps.propNames;
-
-// TODO: as prop type/dom props
-export const Base = styled.div<InternalStylesProp & SystemProps & SxProp>(
-  internalStylesProp,
-  systemProps,
-  sxProp
-);
-
-export type BaseProps = React.ComponentProps<typeof Base>;
-export type PublicBaseProps = Omit<BaseProps, '__internalStyles'>;
+export const Base = styled(defaultElement)<BaseProps>(
+  __css,
+  all,
+  sx
+) as BaseComponent;

@@ -1,7 +1,7 @@
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery, Link as GatsbyLink } from "gatsby"
 import React from "react"
 import groupBy from "lodash.groupby"
-import { Box, Flex } from "primer-react-demo"
+import { Box, Flex, Link, Text } from "primer-react-demo"
 
 export function Sidenav() {
   const data = useStaticQuery(graphql`
@@ -27,14 +27,31 @@ export function Sidenav() {
   )
 
   return (
-    <Flex as="nav" p={4} flexDirection="column" gap={4}>
+    <Flex
+      as="nav"
+      p={4}
+      flexDirection="column"
+      gap={4}
+      // borderRightWidth="1px"
+      // borderRightStyle="solid"
+      // borderColor="border.primary"
+    >
       {Object.entries(groupedPages).map(([group, pages]) => (
         <Flex flexDirection="column" gap={2}>
-          {group !== "null" ? <strong>{group}</strong> : null}
-          <Flex as="ul" m={0} p={0} flexDirection="column" gap={1}>
+          {group !== "null" ? (
+            <Text fontSize={1} fontWeight="bold">
+              {group}
+            </Text>
+          ) : null}
+          <Flex as="ul" m={0} p={0} flexDirection="column" gap={2}>
             {pages.map(page => (
               <Box as="li" key={page.id} sx={{ listStyle: "none" }}>
-                <Link to={`/${page.childMdx.slug}`}>
+                <Link
+                  as={GatsbyLink}
+                  to={`/${page.childMdx.slug}`}
+                  fontSize={1}
+                  color="text.secondary"
+                >
                   {page.childMdx.frontmatter.title || page.childMdx.slug}
                 </Link>
               </Box>

@@ -14,29 +14,48 @@ export function Code({ children, live }: CodeProps) {
     return (
       <LiveProvider code={code} scope={components}>
         <Box
-          p={3}
           borderWidth={1}
           borderStyle="solid"
           borderColor="border.primary"
-          borderTopRightRadius={2}
-          borderTopLeftRadius={2}
+          borderRadius={2}
         >
-          <LivePreview />
+          <Box
+            p={3}
+            borderBottomWidth={1}
+            borderBottomStyle="solid"
+            borderColor="border.primary"
+            borderTopRightRadius={2}
+            borderTopLeftRadius={2}
+          >
+            <LivePreview />
+          </Box>
+          <Box
+            sx={{
+              borderBottomRightRadius: 6,
+              borderBottomLeftRadius: 6,
+              overflow: "hidden",
+              textarea: {
+                borderBottomRightRadius: 6,
+                borderBottomLeftRadius: 6,
+                outline: "none",
+                "&:focus": { boxShadow: "inset 0 0 0 2px lightblue" },
+              },
+            }}
+          >
+            <LiveEditor
+              theme={prismTheme}
+              // @ts-ignore
+              padding={16}
+              style={{
+                // TODO: use theme values
+                fontFamily:
+                  'SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace',
+                fontSize: 14,
+              }}
+            />
+          </Box>
+          <LiveError />
         </Box>
-        <LiveEditor
-          theme={prismTheme}
-          // @ts-ignore
-          padding={16}
-          style={{
-            // TODO: use theme values
-            fontFamily:
-              'SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace',
-            fontSize: 14,
-            borderBottomRightRadius: 6,
-            borderBottomLeftRadius: 6,
-          }}
-        />
-        <LiveError />
       </LiveProvider>
     )
   }

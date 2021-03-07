@@ -1,8 +1,16 @@
 import React from 'react';
-import { Box, BoxProps } from './Box';
+import { Base } from './Base';
+import { ForwardRefComponent } from './polymorphic';
+import { all, AllSystemProps } from './system-props';
 
-export type TextProps = BoxProps;
+const defaultElement = 'span';
 
-export function Text(props: TextProps) {
-  return <Box as="span" {...props} />;
-}
+export type TextProps = AllSystemProps;
+
+type TextComponent = ForwardRefComponent<typeof defaultElement, TextProps>;
+
+export const Text = React.forwardRef((props, ref) => {
+  return (
+    <Base as={defaultElement} ref={ref} {...props} __systemProps={[all]} />
+  );
+}) as TextComponent;

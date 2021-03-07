@@ -1,14 +1,14 @@
 import React from 'react';
-import { Base, PublicBaseProps } from './Base';
+import { Base } from './Base';
 
-export type CounterProps = PublicBaseProps;
+export type CounterProps = {};
 
 export function Counter(props: CounterProps) {
   return (
     <Base
       as="span"
       {...props}
-      __internalStyles={{
+      __css={{
         display: 'inline-block',
         padding: '0 6px',
         color: 'counter.text',

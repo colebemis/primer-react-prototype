@@ -1,14 +1,14 @@
 import React from 'react';
-import { Base, PublicBaseProps } from './Base';
+import { Base } from './Base';
 
-export type InlineCodeProps = PublicBaseProps;
+export type InlineCodeProps = { children?: React.ReactNode };
 
 export function InlineCode(props: InlineCodeProps) {
   return (
     <Base
       as="code"
       {...props}
-      __internalStyles={{
+      __css={{
         padding: '0.2em 0.4em',
         bg: 'markdown.codeBg',
         fontFamily: 'mono',

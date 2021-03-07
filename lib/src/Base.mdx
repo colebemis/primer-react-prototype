@@ -3,18 +3,51 @@ group: Internal
 ---
 
 ```tsx
-export type MyComponentProps = {} & PublicBaseProps;
+import React from 'react';
+import { SystemStyleObject } from 'styled-system';
+import { Base, SxProp } from './Base';
+import { ForwardRefComponent } from './polymorphic';
+import { common, CommonSystemProps, forwardSystemProps } from './system-props';
 
-export function MyComponent(props: MyComponentProps) {
-  return (
-    <Base
-      as="span"
-      {...props}
-      __internalStyles={{
-        // theme-aware styles
-        color: 'text.success',
-      }}
-    />
-  );
-}
+const defaultElement = 'div';
+
+type Size = 'small' | 'large';
+
+export type ExampleProps = SxProp &
+  CommonSystemProps & {
+    size?: Size;
+  };
+
+type ExampleComponent = ForwardRefComponent<
+  typeof defaultElement,
+  ExampleProps
+>;
+
+const sizes: Record<Size, SystemStyleObject> = {
+  small: {
+    px: 3,
+    py: 2,
+  },
+  large: {
+    px: 4,
+    py: 2,
+  },
+};
+
+export const Example = React.forwardRef(
+  ({ as = defaultElement, size = 'small', ...props }, ref) => {
+    return (
+      <Base
+        as={as}
+        ref={ref}
+        {...forwardSystemProps(props, common)}
+        __css={{
+          // theme-aware styles
+          bg: 'bg.primary',
+          ...sizes[size],
+        }}
+      />
+    );
+  }
+) as ExampleComponent;
 ```

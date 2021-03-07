@@ -1,8 +1,22 @@
 import React from 'react';
-import { Box, BoxProps } from './Box';
+import { Base, SxProp } from './Base';
+import { ForwardRefComponent } from './polymorphic';
+import { all, AllSystemProps } from './system-props';
 
-export type FlexProps = Omit<BoxProps, 'display'>;
+const defaultElement = 'div';
 
-export function Flex(props: FlexProps) {
-  return <Box {...props} display="flex" />;
-}
+export type FlexProps = SxProp & AllSystemProps;
+
+type FlexComponent = ForwardRefComponent<typeof defaultElement, FlexProps>;
+
+export const Flex = React.forwardRef((props, ref) => {
+  return (
+    <Base
+      as={defaultElement}
+      ref={ref}
+      {...props}
+      __css={{ display: 'flex' }}
+      __systemProps={[all]}
+    />
+  );
+}) as FlexComponent;

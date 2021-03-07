@@ -1,131 +1,15 @@
-import { useTheme } from '@emotion/react';
-import * as CSS from 'csstype';
 import React from 'react';
-import {
-  background,
-  BackgroundProps,
-  border,
-  BorderProps,
-  color,
-  ColorProps,
-  compose,
-  alignItems,
-  alignContent,
-  justifyItems,
-  justifyContent,
-  flexWrap,
-  AlignItemsProps,
-  AlignContentProps,
-  JustifyContentProps,
-  FlexWrapProps,
-  flexDirection,
-  FlexDirectionProps,
-  gridAutoColumns,
-  GridAutoColumnsProps,
-  gridAutoFlow,
-  GridAutoFlowProps,
-  gridAutoRows,
-  GridAutoRowsProps,
-  gridColumnGap,
-  GridColumnGapProps,
-  gridGap,
-  GridGapProps,
-  gridRowGap,
-  GridRowGapProps,
-  gridTemplateAreas,
-  GridTemplateAreasProps,
-  gridTemplateColumns,
-  GridTemplateColumnsProps,
-  gridTemplateRows,
-  GridTemplateRowsProps,
-  layout,
-  LayoutProps,
-  padding,
-  PaddingProps,
-  RequiredTheme,
-  ResponsiveValue,
-  shadow,
-  ShadowProps,
-  system,
-  Theme,
-  TLengthStyledSystem,
-  typography,
-  TypographyProps,
-} from 'styled-system';
-import { Base, PublicBaseProps } from './Base';
+import { Base, SxProp } from './Base';
+import { ForwardRefComponent } from './polymorphic';
+import { all, AllSystemProps } from './system-props';
 
-interface GapProps<
-  ThemeType extends Theme = RequiredTheme,
-  TVal = CSS.Property.Gap<TLengthStyledSystem>
-> {
-  gap?: ResponsiveValue<TVal, ThemeType>;
-}
+const defaultElement = 'div';
 
-// NOTE: gap is not fully supported yet (https://caniuse.com/flexbox-gap)
-const gap = system({
-  gap: {
-    property: 'gap',
-    scale: 'space',
-  },
-});
+export type BoxProps = SxProp & AllSystemProps;
+type BoxComponent = ForwardRefComponent<typeof defaultElement, BoxProps>;
 
-type AdditionalSystemProps = ColorProps &
-  BackgroundProps &
-  PaddingProps &
-  LayoutProps &
-  TypographyProps &
-  BorderProps &
-  ShadowProps &
-  FlexDirectionProps &
-  AlignItemsProps &
-  AlignContentProps &
-  JustifyContentProps &
-  FlexWrapProps &
-  GridGapProps &
-  GridRowGapProps &
-  GridColumnGapProps &
-  GridAutoFlowProps &
-  GridAutoRowsProps &
-  GridAutoColumnsProps &
-  GridTemplateRowsProps &
-  GridTemplateColumnsProps &
-  GridTemplateAreasProps &
-  GapProps;
-
-const additionalSystemProps = compose(
-  color,
-  background,
-  padding,
-  layout,
-  typography,
-  border,
-  shadow,
-  flexDirection,
-  alignItems,
-  alignContent,
-  justifyItems,
-  justifyContent,
-  flexWrap,
-  gridGap,
-  gridRowGap,
-  gridColumnGap,
-  gridAutoFlow,
-  gridAutoRows,
-  gridAutoColumns,
-  gridTemplateRows,
-  gridTemplateColumns,
-  gridTemplateAreas,
-  gap
-);
-
-export type BoxProps = AdditionalSystemProps & PublicBaseProps;
-
-export function Box(props: BoxProps) {
-  const theme = useTheme();
+export const Box = React.forwardRef((props, ref) => {
   return (
-    <Base
-      {...props}
-      __internalStyles={additionalSystemProps({ theme, ...props })}
-    />
+    <Base as={defaultElement} ref={ref} {...props} __systemProps={[all]} />
   );
-}
+}) as BoxComponent;
