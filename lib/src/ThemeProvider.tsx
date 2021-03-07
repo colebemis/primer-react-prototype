@@ -11,8 +11,8 @@ type ThemeProviderProps = {
   children?: React.ReactNode;
 };
 
-const GlobalStyle = createGlobalStyle(
-  css({
+const GlobalStyle = createGlobalStyle`
+  ${css({
     '*, *::before, *::after': {
       boxSizing: 'inherit',
     },
@@ -24,8 +24,8 @@ const GlobalStyle = createGlobalStyle(
       lineHeight: 'default',
       boxSizing: 'border-box',
     },
-  })
-);
+  })}
+`;
 
 export function ThemeProvider({
   theme = defaultTheme,
