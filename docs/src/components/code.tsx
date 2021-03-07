@@ -1,14 +1,16 @@
 import * as components from "primer-react-demo"
 import { Box } from "primer-react-demo"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import prismTheme from "prism-react-renderer/themes/github"
 import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
+import { useTheme } from "styled-components"
+import { prismTheme } from "../prism-theme"
 
 type CodeProps = { children?: string; live?: boolean }
 
 export function Code({ children, live }: CodeProps) {
   const code = children.trim()
+  const theme: any = useTheme()
 
   if (live) {
     return (
@@ -38,12 +40,14 @@ export function Code({ children, live }: CodeProps) {
                 borderBottomRightRadius: 6,
                 borderBottomLeftRadius: 6,
                 outline: "none",
-                "&:focus": { boxShadow: "inset 0 0 0 2px lightblue" },
+                "&:focus": {
+                  boxShadow: `inset 0 0 0 2px ${theme.colors.state.focus.border}`,
+                },
               },
             }}
           >
             <LiveEditor
-              theme={prismTheme}
+              theme={prismTheme(theme)}
               // @ts-ignore
               padding={16}
               style={{
@@ -60,7 +64,12 @@ export function Code({ children, live }: CodeProps) {
     )
   }
   return (
-    <Highlight {...defaultProps} code={code} language="jsx" theme={prismTheme}>
+    <Highlight
+      {...defaultProps}
+      code={code}
+      language="jsx"
+      theme={prismTheme(theme)}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Box
           as="pre"
